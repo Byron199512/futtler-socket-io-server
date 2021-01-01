@@ -19,9 +19,17 @@
             console.log('Desconectado al servidor')
         })
 
+        socket.on('active-bands', function (bands) {
+            console.clear();
+            console.table(bands);
+        })
         socket.emit('mensaje', 'byron');
         socket.on('mensaje', (data) => {
             console.log(data.admin);
+        })
+
+        socket.on('nuevo-mensaje', function (data) {
+            console.log('escuchando', data);
         })
     </script>
 </body>
